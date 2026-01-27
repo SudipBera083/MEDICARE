@@ -1,4 +1,4 @@
-import mongoose from `mongoose`
+import mongoose from "mongoose";
 
 const clientDetailsModelSchema = new mongoose.Schema({
 
@@ -7,9 +7,14 @@ const clientDetailsModelSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    shopAddress: {          // ➡️ in the user creation  need to add .toUpperCase()
+    shopAddress: {          
         type: String,
         required: true,
+    },
+    ownerName: {          // ➡️ in the user creation  need to add .toUpperCase()
+        type: String,
+        required: true,
+        uppercase: true,
     },
     ownerPhoneNumeber: {
         type: Number,
@@ -21,9 +26,12 @@ const clientDetailsModelSchema = new mongoose.Schema({
     ownerEmailID: {
         type: String,
         required: true,
+        lowercase: true,
+        unique: true
     },
     ownerGSTnumber: {
         type: String,
+        unique: true
 
     }
 

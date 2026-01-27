@@ -3,13 +3,13 @@ import cors from "cors"
 import dotenv from "dotenv"
 //import cookieParser from "cookie-parser"
 import connectDB from "./src/config/database.config.js"
-import clientRoute from "./src/routes/client.route.js"
 import adminRoute from "./src/routes/admin.route.js"
-import patientRoute from "./src/routes/patient.route.js"
-import testAppointmentRoute from "./src/routes/testAppointment.route.js"
-import billRoute from "./src/routes/bill.route.js"
-import paymentStatusRoute from "./src/routes/paymentStatus.route.js"
-import pathologyServicesRoute from "./src/routes/pathologyServices.route.js"
+// import clientRoute from "./src/routes/client.route.js"
+// import patientRoute from "./src/routes/patient.route.js"
+// import testAppointmentRoute from "./src/routes/testAppointment.route.js"
+// import billRoute from "./src/routes/bill.route.js"
+// import paymentStatusRoute from "./src/routes/paymentStatus.route.js"
+// import pathologyServicesRoute from "./src/routes/pathologyServices.route.js"
 
 
 dotenv.config();
@@ -18,13 +18,13 @@ dotenv.config();
 const app = express()
 
 
-app.use(`/api/client_route`, clientRoute)
+// app.use(`/api/client_route`, clientRoute)
 app.use(`/api/admin_route`, adminRoute)
-app.use(`/api/patient_route`, patientRoute)
-app.use(`/api/testAppointment_route`, testAppointmentRoute)
-app.use(`/api/bill_route`, billRoute)
-app.use(`/api/paymentStatus_route`, paymentStatusRoute)
-app.use(`/api/pathologyServices_route`, pathologyServicesRoute)
+// app.use(`/api/patient_route`, patientRoute)
+// app.use(`/api/testAppointment_route`, testAppointmentRoute)
+// app.use(`/api/bill_route`, billRoute)
+// app.use(`/api/paymentStatus_route`, paymentStatusRoute)
+// app.use(`/api/pathologyServices_route`, pathologyServicesRoute)
 
 
 const port = process.env.PORT || 3000
