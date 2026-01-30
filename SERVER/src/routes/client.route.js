@@ -7,7 +7,7 @@ import { authMiddleware, isClient } from "../middleware/auth.midddleware.js";
 const router = Router();
 
 router.post("/login" , authMiddleware, isClient, clientLogin_controller)  //✅
-router.get("/paymentStatus" , authMiddleware, isClient, seePaymentStatus_controller)
+router.get("/paymentStatus" , authMiddleware, isClient, seePaymentStatus_controller)//✅
 router.post("/bookAppointment" , authMiddleware, isClient, bookAppointment_controller)
 router.post("/updateReportValues" , authMiddleware, isClient, updateReportValues_controller)
 router.post("/generateBill" , authMiddleware, isClient, generateBill_controller)

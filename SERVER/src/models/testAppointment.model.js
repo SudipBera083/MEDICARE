@@ -1,7 +1,7 @@
-import mongoose from `mongoose`
+import mongoose from "mongoose"
 
 const testAppointmentSchema = new mongoose.Schema({
-    patientID: {
+    PatientID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Patient"
     },

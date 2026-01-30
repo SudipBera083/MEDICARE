@@ -1,6 +1,8 @@
 import ClientModel from "../models/client.model.js"
 import bcrypt from "bcrypt"
 
+
+// registering the client in the database 
 export const registerClientandSave_DAO = async (shopName, shopAddress, ownerPhoneNumber, ownerName, ownerEmailID, ownerGSTnumber) => {
     const newClient = await new ClientModel(
         {
