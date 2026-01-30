@@ -29,8 +29,7 @@ export const seePaymentStatus_controller = tryCatchWrapper(async (req, res) => {
 
 // Other controller functions...
 export const bookAppointment_controller = async (req, res) => {
-    // TODO: Implement
-   // res.status(501).json({ message: "Not implemented yet" });
+   
    try{
    const {PatientID , testID, testDate , testStatus , paymentID , billID} = req.body
    const newAppointmentBooking = await bookNewTestAppointment_Service(PatientID , testID, testDate , testStatus , paymentID , billID)
