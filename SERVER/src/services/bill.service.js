@@ -1,8 +1,10 @@
 import {
     getBillsByClientId_DAO,
     getBillbyClinetIdandPaymentStatus_DAO,
-    getPaymentSummary_DAO
+    getPaymentSummary_DAO,
+    findBillById_DAO
 } from "../DAO/bill.dao.js";
+import Bill from "../models/bill.model.js";
 
 // making two saperate functions 1 for getting bil by clinet id and saperate function for getting bill bystatus
 
@@ -16,9 +18,9 @@ export const getBillByPaymentStatus_Service = async (clientId, status) => {
 }
 
 
-export const getAllBillsByClientId_Service = async (req, res) => {
+export const getAllBillsByClientId_Service = async (clientId) => {
     try {
-        return await getBillsByClientId_DAO({ clientId: clientId })
+        return await getBillsByClientId_DAO(clientId)
     } catch (error) {
         throw new Error(`SERVICE ERROR | getAllBillsByClientId_Service ${clientId} | Error Message => ${error} `)
     }
@@ -43,9 +45,29 @@ export const getPaymentSummary_Service = async (clientId) => {
                 totalAmount: item.totalAmount
             };
         });
+        return formattedSummary;
+
     } catch (error) {
         throw new Error(`SERVICE ERROR | getPaymentSummary_Service ${clientId} | Error Message => ${error} `)
     }
 
-    return formattedSummary;
+
 };
+
+export const generateAndSaveBill_service = async (billData) => {
+    try {
+        const isBillExist = await findBillById_DAO(billData._id);
+        if (isBillExist) {
+            // update existing bill logic here
+            Object.assign(isBillExist, billData);
+            return await isBillExist.save();  // ⚠️⚠️this line need to be check it can create problem like it can save same bill again and again and createa never ending loop situation
+        } else {
+            // create new bill logic here
+            const newBill = new Bill(billData);
+            return await newBill.save();
+        }
+
+    } catch (error) {
+        throw new Error(`SERVICE ERROR | generateAndSaveBill_service  | Error Message => ${error.message} `)
+    }
+}
