@@ -16,6 +16,7 @@ const clientDetailsModelSchema = new mongoose.Schema({
         required: true,
         uppercase: true,
     },
+   
     ownerPhoneNumber: {
         type: String,        //  Store as string
         required: true,
@@ -32,6 +33,10 @@ const clientDetailsModelSchema = new mongoose.Schema({
         required: true,
         lowercase: true,
         unique: true
+    },
+     password: {
+        type: String,
+        required: true,
     },
     ownerGSTnumber: {
         type: String,

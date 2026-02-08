@@ -4,12 +4,12 @@ import { getAllClients_DAO } from "../DAO/admin.dao.js";
 import { bookNewTestAppointment_DAO } from "../DAO/testAppointment.dao.js"
 
 
-export const registerClient_Service = async (shopName, shopAddress, ownerPhoneNumber, ownerName, ownerEmailID, ownerGSTnumber) => {
+export const registerClient_Service = async (shopName, shopAddress, ownerPhoneNumber, ownerName, ownerEmailID,password, ownerGSTnumber) => {
 
     if (await getClientByShopName_DAO(shopName)) {
         throw new Error("Client already exists")
     }
-    const newClient = await registerClientandSave_DAO(shopName, shopAddress, ownerPhoneNumber, ownerName, ownerEmailID, ownerGSTnumber)
+    const newClient = await registerClientandSave_DAO(shopName, shopAddress, ownerPhoneNumber, ownerName, ownerEmailID, password,ownerGSTnumber)
 
     return newClient
 }
