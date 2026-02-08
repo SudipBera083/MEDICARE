@@ -24,21 +24,22 @@ export const adminLogin_controller = async (req, res) => {
 };
 
 export const clientLogin_controller = async (req, res) => {
-  const { email, password } = req.body;
+  const { ownerEmailID, password } = req.body;
 
   try {
     // Call service layer
-    const { token, user } = await clientLogin_Service(email, password);
-    res.cookie("ACCESSclient_TOKEN", token, cookieOptions)
+    const { token, user } = await clientLogin_Service(ownerEmailID, password);
+    
+      res.cookie("ACCESSclient_TOKEN", token, cookieOptions)
     // Send response
     req.user = user;
-    console.log(`user in controller: ${user}`); // debugging log 
-    res.json(user);
+    // console.log(`user in controller: ${user}`); // debugging log 
+    res.json({  message: "Client login successful", user });
 
   } catch (error) {
     console.error(`CONTROLLER ERROR | login-logout |clientLogin_controller ${error}`)
     res.status(500).json({
-      message: message,
+      message: error.message,
       controller: "clientLogin_controller",
       error: error.toString()
     })

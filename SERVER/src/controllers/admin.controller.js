@@ -4,8 +4,8 @@ import { registerClient_Service, getAllClients_Service } from "../services/clien
 
 export const registerClient_Controller = async (req, res) => {
     try{
-    const { shopName, shopAddress, ownerPhoneNumber, ownerName, ownerEmailID, ownerGSTnumber } = req.body
-    const newClient =await registerClient_Service(shopName, shopAddress, ownerPhoneNumber, ownerName, ownerEmailID, ownerGSTnumber)
+    const { shopName, shopAddress, ownerPhoneNumber, ownerName, ownerEmailID,password, ownerGSTnumber } = req.body
+    const newClient =await registerClient_Service(shopName, shopAddress, ownerPhoneNumber, ownerName, ownerEmailID,password, ownerGSTnumber)
     return res.status(201).json({ message: "Client registered successfully", newClient })
     }
     catch(error){

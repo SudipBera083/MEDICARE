@@ -4,7 +4,7 @@ import { findClientByEmail_DAO, compareClientPassword_DAO } from "../DAO/client.
 import { signedJsonWebToken } from "../jwt/jsonwebtokenSign.js";
 
 // Admin login service
-export const adminLogin_Service = tryCatchWrapper(async (email, password) => {
+export const adminLogin_Service = async (email, password) => {
     // Find admin in database
     const admin = await findAdminByEmail_DAO(email);
     if (!admin) {
@@ -34,13 +34,13 @@ export const adminLogin_Service = tryCatchWrapper(async (email, password) => {
             role: 'admin'
         }
     };
-});
+};
 
 
 // Client login service
-export const clientLogin_Service = tryCatchWrapper(async (email, password) => {
+export const clientLogin_Service = async (ownerEmailID, password) => {
     // Find client in database
-    const client = await findClientByEmail_DAO(email);
+    const client = await findClientByEmail_DAO(ownerEmailID);
     if (!client) {
         throw { status: 401, message: 'Invalid credentials' };
     }
@@ -64,11 +64,11 @@ export const clientLogin_Service = tryCatchWrapper(async (email, password) => {
             id: client._id,
             name: client.ownerName,
             shopName: client.shopName,
-            email: client.email,
+            email: client.ownerEmailID,
             role: 'client'
         }
     };
-})
+}
 
 
 /*

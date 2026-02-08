@@ -3,6 +3,11 @@ import { verifyToken } from "../jwt/jsonwebtokenValidate.js";
 
 export const authMiddleware = (req, res, next) => {
     const authorizationHeader = req.headers[`authorization`];
+    if (!authorizationHeader) {
+        return res.status(401).json({
+            message: "Authorization header required"
+        })
+    }
     const token = authorizationHeader.split(" ")[1];  // extract the bearer token
 
     if (!token) {

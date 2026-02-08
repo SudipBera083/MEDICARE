@@ -3,7 +3,8 @@ import bcrypt from "bcrypt"
 
 
 // registering the client in the database 
-export const registerClientandSave_DAO = async (shopName, shopAddress, ownerPhoneNumber, ownerName, ownerEmailID, ownerGSTnumber) => {
+export const registerClientandSave_DAO = async (shopName, shopAddress, ownerPhoneNumber, ownerName, ownerEmailID,password, ownerGSTnumber) => {
+    const hashedPassword = await bcrypt.hash(password, 10);  // Hashing the password before storing it in the database.
     const newClient = await new ClientModel(
         {
             shopName,
@@ -11,6 +12,7 @@ export const registerClientandSave_DAO = async (shopName, shopAddress, ownerPhon
             ownerPhoneNumber,
             ownerName,
             ownerEmailID,
+            password: hashedPassword,
             ownerGSTnumber,
         }
     )
@@ -23,8 +25,8 @@ export const getClientByShopName_DAO = async (shopName) => {
 
 
 // Find client by email
-export const findClientByEmail_DAO = async (email) => {
-    return await ClientModel.findOne({ email });
+export const findClientByEmail_DAO = async (ownerEmailID) => {
+    return await ClientModel.findOne({ ownerEmailID });
 };
 
 
