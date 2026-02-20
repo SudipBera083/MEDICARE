@@ -24,8 +24,8 @@ const parameterSchema = new mongoose.Schema({
         default: "number"
     },
 
-    options: {
-        type: [String],
+    allowedValues: {         //
+        type: [String],  
         default: []
     }
 
@@ -72,7 +72,7 @@ const testMasterSchema = new mongoose.Schema({
 
 }, { timestamps: true });
 
-function arrayLimit(val) {
+function arrayLimit(val) { // custom validator to ensure at least one parameter is provided
     return val.length > 0;
 }
 
