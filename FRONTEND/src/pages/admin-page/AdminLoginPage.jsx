@@ -5,8 +5,7 @@ import {
   Mail, 
   Lock, 
   ArrowRight, 
-  Headphones,
-  Eye,
+   Eye,
   EyeOff
 } from 'lucide-react';
 
