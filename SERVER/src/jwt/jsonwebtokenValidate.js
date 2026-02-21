@@ -5,4 +5,3 @@ export const verifyToken = async (token) => {
     console.log("Decoded Token ➡️: ", decodedToken)
     return decodedToken
 }
-

@@ -4,7 +4,7 @@ function App() {
  
 
   return (
-    <div className='bg-#808080 text-white h-full'>
+    <div >
       Welcome
       <HomePage />
     </div>
