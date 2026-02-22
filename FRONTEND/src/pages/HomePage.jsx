@@ -13,7 +13,7 @@
  */
 
 import { motion } from "motion/react";
-import { Beaker, ShieldCheck, ArrowRight, Sparkles, Circle, ArrowBigDown } from "lucide-react";
+import { Beaker, ArrowRight, Sparkles, Circle } from "lucide-react";
 import AdminLoginLogoutButton from "../buttons/AdminLoginLogoutButton";
 
 function HomePage() {
@@ -22,26 +22,26 @@ function HomePage() {
       <div className="min-h-screen flex flex-col font-sans selection:bg-teal-200">
 
         {/* Navigation */}
-<nav className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-teal-700 via-teal-600 to-cyan-500 backdrop-blur-md border-b border-teal-500/40 h-[72px] shadow-lg shadow-teal-900/20">
-  <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+        <nav className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-teal-700 via-teal-600 to-cyan-500 backdrop-blur-md border-b border-teal-500/40 h-[72px] shadow-lg shadow-teal-900/20">
+          <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
 
-    {/* Left: Branding */}
-    <div className="flex items-center gap-3">
-      <div className="flex items-center justify-center size-10 rounded-xl bg-white/15 text-white border border-white/20">
-        <Beaker className="size-6" />
-      </div>
-      <div className="flex flex-col">
-        <span className="font-bold text-white text-lg leading-tight tracking-tight drop-shadow-sm">
-          Welcome to Labeasy
-        </span>
-        <span className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest">
-          A product of Droham
-        </span>
-      </div>
-    </div>
+            {/* Left: Branding */}
+            <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center size-10 rounded-xl bg-white/15 text-white border border-white/20">
+                <Beaker className="size-6" />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-bold text-white text-lg leading-tight tracking-tight drop-shadow-sm">
+                  Welcome to Labeasy
+                </span>
+                <span className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest">
+                  A product of Droham
+                </span>
+              </div>
+            </div>
 
-    {/* Right: Admin Login */}
-    {/* <div className="flex items-center gap-4">
+            {/* Right: Admin Login */}
+            {/* <div className="flex items-center gap-4">
       <a
         href="#"
         className="group hidden sm:flex items-center gap-2 px-5 h-10 rounded-lg border-2 border-white/70 text-white font-semibold text-sm transition-all duration-300 hover:bg-white hover:text-teal-700 bg-white/10 backdrop-blur-sm"
@@ -50,9 +50,9 @@ function HomePage() {
         
       </a>
     </div> */}
-    <span><AdminLoginLogoutButton/></span>
-  </div>
-</nav>
+            <span><AdminLoginLogoutButton /></span>
+          </div>
+        </nav>
 
         {/* Main Content */}
         <main className="flex-grow flex flex-col items-center justify-center relative pt-[72px] min-h-[calc(100vh-48px)] overflow-hidden">
@@ -120,7 +120,7 @@ function HomePage() {
               >
                 <span className="relative z-20">Get Started</span>
                 <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1 relative z-20" />
-                
+
                 {/* Shine Effect */}
                 <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/20 to-transparent z-10 w-1/2 h-full skew-x-12" />
               </button>
