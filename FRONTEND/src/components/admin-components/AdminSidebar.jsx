@@ -4,7 +4,7 @@ import { useNavigate } from '@tanstack/react-router'
 
 const menuItems = [
   { id: 'overview', label: 'Overview', icon: LayoutDashboard, path: '/admin/dashboard' },
-  { id: 'clients', label: 'See all clients', icon: Users, path: '/admin/dashboard/clients' },
+  { id: 'clients', label: 'See all clients', icon: Users, path: '/admin/dashboard/SeeAllClientTable' },
   { id: 'register', label: 'Register New Client', icon: UserPlus, path: '/admin/dashboard/register-client' },
   { id: 'search', label: 'Search Client by ID', icon: Search, path: '/admin/dashboard/search-client' },
 ]

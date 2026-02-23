@@ -14,6 +14,7 @@ import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminDashboardIndexRouteImport } from './routes/admin/dashboard/index'
 import { Route as AdminDashboardSearchClientRouteImport } from './routes/admin/dashboard/search-client'
 import { Route as AdminDashboardRegisterClientRouteImport } from './routes/admin/dashboard/register-client'
+import { Route as AdminDashboardSeeAllClientTableRouteImport } from './routes/admin/dashboard/SeeAllClientTable'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -42,16 +43,24 @@ const AdminDashboardRegisterClientRoute =
     path: '/register-client',
     getParentRoute: () => AdminDashboardRoute,
   } as any)
+const AdminDashboardSeeAllClientTableRoute =
+  AdminDashboardSeeAllClientTableRouteImport.update({
+    id: '/SeeAllClientTable',
+    path: '/SeeAllClientTable',
+    getParentRoute: () => AdminDashboardRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin/dashboard': typeof AdminDashboardRouteWithChildren
+  '/admin/dashboard/SeeAllClientTable': typeof AdminDashboardSeeAllClientTableRoute
   '/admin/dashboard/register-client': typeof AdminDashboardRegisterClientRoute
   '/admin/dashboard/search-client': typeof AdminDashboardSearchClientRoute
   '/admin/dashboard/': typeof AdminDashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin/dashboard/SeeAllClientTable': typeof AdminDashboardSeeAllClientTableRoute
   '/admin/dashboard/register-client': typeof AdminDashboardRegisterClientRoute
   '/admin/dashboard/search-client': typeof AdminDashboardSearchClientRoute
   '/admin/dashboard': typeof AdminDashboardIndexRoute
@@ -60,6 +69,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin/dashboard': typeof AdminDashboardRouteWithChildren
+  '/admin/dashboard/SeeAllClientTable': typeof AdminDashboardSeeAllClientTableRoute
   '/admin/dashboard/register-client': typeof AdminDashboardRegisterClientRoute
   '/admin/dashboard/search-client': typeof AdminDashboardSearchClientRoute
   '/admin/dashboard/': typeof AdminDashboardIndexRoute
@@ -69,12 +79,14 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin/dashboard'
+    | '/admin/dashboard/SeeAllClientTable'
     | '/admin/dashboard/register-client'
     | '/admin/dashboard/search-client'
     | '/admin/dashboard/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin/dashboard/SeeAllClientTable'
     | '/admin/dashboard/register-client'
     | '/admin/dashboard/search-client'
     | '/admin/dashboard'
@@ -82,6 +94,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/admin/dashboard'
+    | '/admin/dashboard/SeeAllClientTable'
     | '/admin/dashboard/register-client'
     | '/admin/dashboard/search-client'
     | '/admin/dashboard/'
@@ -129,16 +142,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDashboardRegisterClientRouteImport
       parentRoute: typeof AdminDashboardRoute
     }
+    '/admin/dashboard/SeeAllClientTable': {
+      id: '/admin/dashboard/SeeAllClientTable'
+      path: '/SeeAllClientTable'
+      fullPath: '/admin/dashboard/SeeAllClientTable'
+      preLoaderRoute: typeof AdminDashboardSeeAllClientTableRouteImport
+      parentRoute: typeof AdminDashboardRoute
+    }
   }
 }
 
 interface AdminDashboardRouteChildren {
+  AdminDashboardSeeAllClientTableRoute: typeof AdminDashboardSeeAllClientTableRoute
   AdminDashboardRegisterClientRoute: typeof AdminDashboardRegisterClientRoute
   AdminDashboardSearchClientRoute: typeof AdminDashboardSearchClientRoute
   AdminDashboardIndexRoute: typeof AdminDashboardIndexRoute
 }
 
 const AdminDashboardRouteChildren: AdminDashboardRouteChildren = {
+  AdminDashboardSeeAllClientTableRoute: AdminDashboardSeeAllClientTableRoute,
   AdminDashboardRegisterClientRoute: AdminDashboardRegisterClientRoute,
   AdminDashboardSearchClientRoute: AdminDashboardSearchClientRoute,
   AdminDashboardIndexRoute: AdminDashboardIndexRoute,
