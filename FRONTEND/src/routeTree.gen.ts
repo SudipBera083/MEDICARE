@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminLoginRouteRouteImport } from './routes/admin/loginRoute'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminDashboardIndexRouteImport } from './routes/admin/dashboard/index'
 import { Route as AdminDashboardSearchClientRouteImport } from './routes/admin/dashboard/search-client'
@@ -19,6 +20,11 @@ import { Route as AdminDashboardSeeAllClientTableRouteImport } from './routes/ad
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRouteRoute = AdminLoginRouteRouteImport.update({
+  id: '/admin/loginRoute',
+  path: '/admin/loginRoute',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminDashboardRoute = AdminDashboardRouteImport.update({
@@ -53,6 +59,7 @@ const AdminDashboardSeeAllClientTableRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin/dashboard': typeof AdminDashboardRouteWithChildren
+  '/admin/loginRoute': typeof AdminLoginRouteRoute
   '/admin/dashboard/SeeAllClientTable': typeof AdminDashboardSeeAllClientTableRoute
   '/admin/dashboard/register-client': typeof AdminDashboardRegisterClientRoute
   '/admin/dashboard/search-client': typeof AdminDashboardSearchClientRoute
@@ -60,6 +67,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin/loginRoute': typeof AdminLoginRouteRoute
   '/admin/dashboard/SeeAllClientTable': typeof AdminDashboardSeeAllClientTableRoute
   '/admin/dashboard/register-client': typeof AdminDashboardRegisterClientRoute
   '/admin/dashboard/search-client': typeof AdminDashboardSearchClientRoute
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin/dashboard': typeof AdminDashboardRouteWithChildren
+  '/admin/loginRoute': typeof AdminLoginRouteRoute
   '/admin/dashboard/SeeAllClientTable': typeof AdminDashboardSeeAllClientTableRoute
   '/admin/dashboard/register-client': typeof AdminDashboardRegisterClientRoute
   '/admin/dashboard/search-client': typeof AdminDashboardSearchClientRoute
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin/dashboard'
+    | '/admin/loginRoute'
     | '/admin/dashboard/SeeAllClientTable'
     | '/admin/dashboard/register-client'
     | '/admin/dashboard/search-client'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin/loginRoute'
     | '/admin/dashboard/SeeAllClientTable'
     | '/admin/dashboard/register-client'
     | '/admin/dashboard/search-client'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/admin/dashboard'
+    | '/admin/loginRoute'
     | '/admin/dashboard/SeeAllClientTable'
     | '/admin/dashboard/register-client'
     | '/admin/dashboard/search-client'
@@ -103,6 +115,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminDashboardRoute: typeof AdminDashboardRouteWithChildren
+  AdminLoginRouteRoute: typeof AdminLoginRouteRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -112,6 +125,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/loginRoute': {
+      id: '/admin/loginRoute'
+      path: '/admin/loginRoute'
+      fullPath: '/admin/loginRoute'
+      preLoaderRoute: typeof AdminLoginRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/dashboard': {
@@ -173,6 +193,7 @@ const AdminDashboardRouteWithChildren = AdminDashboardRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminDashboardRoute: AdminDashboardRouteWithChildren,
+  AdminLoginRouteRoute: AdminLoginRouteRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
