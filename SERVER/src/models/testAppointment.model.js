@@ -43,7 +43,6 @@ const TestAppointment = mongoose.model("TestAppointment", testAppointmentSchema)
 export default TestAppointment;
 */
 
-import mongoose from "mongoose";
 
 const testAppointmentSchema = new mongoose.Schema({
 

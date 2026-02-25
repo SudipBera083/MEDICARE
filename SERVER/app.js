@@ -10,7 +10,8 @@ import adminRoute from "./src/routes/admin.route.js"
 // import billRoute from "./src/routes/bill.route.js"
 // import paymentStatusRoute from "./src/routes/paymentStatus.route.js"
 // import pathologyServicesRoute from "./src/routes/pathologyServices.route.js"
-
+import  tryCatchWrapper  from "./src/utility/tryCatchWrapper.util.js";
+import { saveClientSubscription_Service, getClientSubscriptionByEmail_Service, updateClientSubscription_Service, deleteClientSubscription_Service, isClientSubscriptionActive_Service, getAllClientSubscriptions_Service } from "./src/services/client.service.js";
 
 dotenv.config();
 
@@ -34,6 +35,15 @@ app.use(`/api/admin_route`, adminRoute)
 // app.use(`/api/bill_route`, billRoute)
 // app.use(`/api/paymentStatus_route`, paymentStatusRoute)
 // app.use(`/api/pathologyServices_route`, pathologyServicesRoute)
+
+
+// subscription routes
+app.post("/api/client_route/subscription" , tryCatchWrapper(saveClientSubscription_Service))
+app.get("/api/client_route/subscription" , tryCatchWrapper(getClientSubscriptionByEmail_Service))
+app.put("/api/client_route/subscription" , tryCatchWrapper(updateClientSubscription_Service))
+app.delete("/api/client_route/subscription" , tryCatchWrapper(deleteClientSubscription_Service))
+app.get("/api/client_route/subscription/active" , tryCatchWrapper(isClientSubscriptionActive_Service))
+app.get("/api/client_route/subscriptions" , tryCatchWrapper(getAllClientSubscriptions_Service))
 
 
 
