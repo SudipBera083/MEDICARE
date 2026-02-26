@@ -1,3 +1,4 @@
+
 import mongoose from "mongoose"
 
 const patientSchema = new mongoose.Schema({
@@ -5,17 +6,14 @@ const patientSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    middleName: {
-        type: String,
-    },
+    middleName: String,
     lastName: {
         type: String,
         required: true,
     },
     patientPhoneNumber: {
-        type: String,        //  Store as string
+        type: String,
         required: true,
-       // unique: true,
         validate: {
             validator: function (v) {
                 return /^(\+91)?[-\s]?[6-9]\d{9}$/.test(v.replace(/[-\s]/g, ''));
@@ -24,9 +22,11 @@ const patientSchema = new mongoose.Schema({
         }
     },
 
-    // add all the services he opted till now in an array format 
+    reports: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "PatientReport"
+    }]
+
 }, { timestamps: true })
 
-const Patient = mongoose.model("Patient", patientSchema)
-
-export default Patient
+export default mongoose.model("Patient", patientSchema)

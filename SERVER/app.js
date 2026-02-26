@@ -10,6 +10,8 @@ import adminRoute from "./src/routes/admin.route.js"
 // import billRoute from "./src/routes/bill.route.js"
 // import paymentStatusRoute from "./src/routes/paymentStatus.route.js"
 // import pathologyServicesRoute from "./src/routes/pathologyServices.route.js"
+import masterTestRoute from "./src/routes/masterTest.route.js";
+import patientRoute from "./src/routes/patient.route.js";
 
 
 dotenv.config();
@@ -28,12 +30,18 @@ app.use(express.urlencoded({ extended: true }))
 //app.use(cookieParser()) 
 
 app.use(`/api/admin_route`, adminRoute)
- app.use(`/api/client_route`, clientRoute)
+app.use(`/api/client_route`, clientRoute)
+app.use(`/api/masterTest_route`, masterTestRoute)
+app.use(`/api/patient_route`, patientRoute)
+
+
 // app.use(`/api/patient_route`, patientRoute)
 // app.use(`/api/testAppointment_route`, testAppointmentRoute)
 // app.use(`/api/bill_route`, billRoute)
 // app.use(`/api/paymentStatus_route`, paymentStatusRoute)
 // app.use(`/api/pathologyServices_route`, pathologyServicesRoute)
+
+
 
 
 
